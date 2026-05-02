@@ -209,7 +209,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
   <h1>Panch Pakshi Shastram</h1>
   <p class="sub">Complete Vedic Five Bird System — PDF-Verified Calculator</p>
   <div class="birds-row">
-    <!-- CORRECTED strength order: Crow=1 strongest, Peacock=5 weakest per PDF -->
     <div class="bp"><span class="ico">🐦‍⬛</span>Crow<div class="rk">1</div></div>
     <div class="bp"><span class="ico">🦅</span>Vulture<div class="rk">2</div></div>
     <div class="bp"><span class="ico">🐓</span>Hen<div class="rk">3</div></div>
@@ -364,7 +363,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
     <div class="slabel">Bird Significations — Complete Reference</div>
     <div style="overflow-x:auto">
     <table class="sig-table">
-      <!-- CORRECTED column order: Crow(1)=strongest first, then Vulture, Hen, Owl, Peacock -->
       <thead><tr><th>Attribute</th><th>🐦‍⬛ Crow <small style="opacity:.6">#1</small></th><th>🦅 Vulture <small style="opacity:.6">#2</small></th><th>🐓 Hen <small style="opacity:.6">#3</small></th><th>🦉 Owl <small style="opacity:.6">#4</small></th><th>🦚 Peacock <small style="opacity:.6">#5</small></th></tr></thead>
       <tbody id="sig-tbody"></tbody>
     </table>
@@ -373,11 +371,11 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
   <div class="card" style="animation-delay:.05s">
     <div class="slabel">Activity State Colors &amp; Results</div>
     <div class="color-strip">
-      <div class="cs-item"><div class="cs-color" style="background:#f5f5f0;border-color:rgba(255,255,255,.3)"></div><div class="cs-nm">Eating</div><div class="cs-act">White · Complete Gain · 5 Days</div></div>
-      <div class="cs-item"><div class="cs-color" style="background:#c0392b"></div><div class="cs-nm">Walking</div><div class="cs-act">Red · ½ Gain · 4 Days</div></div>
-      <div class="cs-item"><div class="cs-color" style="background:#c9a84c"></div><div class="cs-nm">Ruling</div><div class="cs-act">Golden · ⅓ Gain · 3 Days</div></div>
-      <div class="cs-item"><div class="cs-color" style="background:#808080"></div><div class="cs-nm">Sleeping</div><div class="cs-act">Smokey · ¼ Gain · 2 Days</div></div>
-      <div class="cs-item"><div class="cs-color" style="background:#1a1a1a;border-color:rgba(255,255,255,.15)"></div><div class="cs-nm">Dying</div><div class="cs-act">Black · Losses · 1 Day</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#f5f5f0;border-color:rgba(255,255,255,.3)"></div><div class="cs-nm">Eating</div><div class="cs-act">White · Complete Gain · 5 Days · 1½ Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#c0392b"></div><div class="cs-nm">Walking</div><div class="cs-act">Red · ½ Gain · 4 Days · 1¼ Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#c9a84c"></div><div class="cs-nm">Ruling</div><div class="cs-act">Golden · ⅓ Gain · 3 Days · 2 Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#808080"></div><div class="cs-nm">Sleeping</div><div class="cs-act">Smokey · ¼ Gain · 2 Days · ¾ Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#1a1a1a;border-color:rgba(255,255,255,.15)"></div><div class="cs-nm">Dying</div><div class="cs-act">Black · Losses · 1 Day · ½ Ghatika</div></div>
     </div>
   </div>
   <div class="card" style="animation-delay:.1s">
@@ -418,9 +416,6 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 // DATA LAYER — Fully verified against PDF tables & examples
 // ═══════════════════════════════════════════════════════════
 
-// STRENGTH: Crow=1 (STRONGEST), Vulture=2, Hen=3, Owl=4, Peacock=5 (WEAKEST)
-// Source: PDF "Crow (1) is Most Powerful, followed by Vulture (2), followed by Hen (3),
-//         Followed by Owl (4) Weakest is Peacock (5)."
 const BIRDS = {
   vulture:{name:'Vulture',skt:'Shyena',ico:'🦅',strength:2,col:'#c9a84c',
     planet:'Jupiter',bodyPart:'Head',tattva:'Prithvi (Earth)',deity:'Brahma',
@@ -489,82 +484,70 @@ const BIRDS = {
   }
 };
 
-// ── BIRD ORDER TABLES — Verified line-by-line against PDF "Bird Rising Tables" section ──
-// PDF Tables are the authoritative source (not the text summaries).
+// ── BIRD ORDER TABLES — Verified against PDF "Birds Rising Tables" section ──
+// These are the AUTHORITATIVE table headers (examples confirm tables over text)
 const ORDERS = {
   shukla:{
     day:{
-      // SP Day Sun/Tue:  Vulture–Owl–Crow–Hen–Peacock
-      '0,2':['vulture','owl','crow','hen','peacock'],
-      // SP Day Mon/Wed:  Owl–Crow–Hen–Peacock–Vulture
-      '1,3':['owl','crow','hen','peacock','vulture'],
-      // SP Day Thu:      Hen–Peacock–Vulture–Owl–Crow
-      '4':  ['hen','peacock','vulture','owl','crow'],
-      // SP Day Fri:      Crow–Hen–Peacock–Vulture–Owl
-      '5':  ['crow','hen','peacock','vulture','owl'],
-      // SP Day Sat:      Peacock–Vulture–Owl–Crow–Hen
-      '6':  ['peacock','vulture','owl','crow','hen']
+      '0,2':['vulture','owl','crow','hen','peacock'],   // SP Day Sun/Tue
+      '1,3':['owl','crow','hen','peacock','vulture'],   // SP Day Mon/Wed
+      '4':  ['hen','peacock','vulture','owl','crow'],   // SP Day Thu
+      '5':  ['crow','hen','peacock','vulture','owl'],   // SP Day Fri
+      '6':  ['peacock','vulture','owl','crow','hen']    // SP Day Sat
     },
     night:{
-      // SP Night Sun/Tue: Vulture–Owl–Crow–Hen–Peacock (SAME as SP Day Sun/Tue per Table)
-      '0,2':['vulture','owl','crow','hen','peacock'],
-      // SP Night Mon/Wed: Owl–Crow–Hen–Peacock–Vulture (SAME as SP Day Mon/Wed per Table)
-      '1,3':['owl','crow','hen','peacock','vulture'],
-      // SP Night Thu:     Crow–Hen–Peacock–Vulture–Owl
-      '4':  ['crow','hen','peacock','vulture','owl'],
-      // SP Night Fri:     Hen–Peacock–Vulture–Owl–Crow
-      '5':  ['hen','peacock','vulture','owl','crow'],
-      // SP Night Sat:     Peacock–Vulture–Owl–Crow–Hen
-      '6':  ['peacock','vulture','owl','crow','hen']
+      '0,2':['vulture','owl','crow','hen','peacock'],   // SP Night Sun/Tue (confirmed: Ex1,Ex5)
+      '1,3':['owl','crow','hen','peacock','vulture'],   // SP Night Mon/Wed
+      '4':  ['crow','hen','peacock','vulture','owl'],   // SP Night Thu
+      '5':  ['hen','peacock','vulture','owl','crow'],   // SP Night Fri (confirmed: Ex1)
+      '6':  ['peacock','vulture','owl','crow','hen']    // SP Night Sat
     }
   },
   krishna:{
     day:{
-      // KP Day Sun/Tue:  Vulture–Crow–Peacock–Owl–Hen
-      '0,2':['vulture','crow','peacock','owl','hen'],
-      // KP Day Mon/Wed:  Hen–Vulture–Crow–Peacock–Owl
-      '1,3':['hen','vulture','crow','peacock','owl'],
-      // KP Day Thu:      Owl–Hen–Vulture–Crow–Peacock
-      '4':  ['owl','hen','vulture','crow','peacock'],
-      // KP Day Fri:      Vulture–Crow–Peacock–Owl–Hen  (SAME as KP Day Sun/Tue per Table)
-      '5':  ['vulture','crow','peacock','owl','hen'],
-      // KP Day Sat:      Crow–Peacock–Owl–Hen–Vulture
-      '6':  ['crow','peacock','owl','hen','vulture']
+      '0,2':['vulture','crow','peacock','owl','hen'],   // KP Day Sun/Tue
+      '1,3':['hen','vulture','crow','peacock','owl'],   // KP Day Mon/Wed
+      '4':  ['owl','hen','vulture','crow','peacock'],   // KP Day Thu
+      '5':  ['vulture','crow','peacock','owl','hen'],   // KP Day Fri (Ex6: vulture rules start)
+      '6':  ['crow','peacock','owl','hen','vulture']    // KP Day Sat
     },
     night:{
-      // KP Night Sun/Tue: Vulture–Crow–Peacock–Owl–Hen (SAME as KP Day Sun/Tue per Table)
-      '0,2':['vulture','crow','peacock','owl','hen'],
-      // KP Night Mon/Wed: Hen–Vulture–Crow–Peacock–Owl (SAME as KP Day Mon/Wed per Table)
-      '1,3':['hen','vulture','crow','peacock','owl'],
-      // KP Night Thu:     Owl–Hen–Vulture–Crow–Peacock (SAME as KP Day Thu per Table)
-      '4':  ['owl','hen','vulture','crow','peacock'],
-      // KP Night Fri:     Crow–Peacock–Owl–Hen–Vulture
-      '5':  ['crow','peacock','owl','hen','vulture'],
-      // KP Night Sat:     Peacock–Owl–Hen–Vulture–Crow
-      '6':  ['peacock','owl','hen','vulture','crow']
+      '0,2':['vulture','crow','peacock','owl','hen'],   // KP Night Sun/Tue
+      '1,3':['hen','vulture','crow','peacock','owl'],   // KP Night Mon/Wed
+      '4':  ['owl','hen','vulture','crow','peacock'],   // KP Night Thu
+      '5':  ['crow','peacock','owl','hen','vulture'],   // KP Night Fri (confirmed: Mukesh Ambani)
+      '6':  ['peacock','owl','hen','vulture','crow']    // KP Night Sat
     }
   }
 };
 
-// ── ACTIVITY ORDER per position (universal — same pattern across ALL tables in PDF) ──
-// Pos 1: Eating→Walking→Ruling→Sleeping→Dying
-// Pos 2: Dying→Eating→Walking→Ruling→Sleeping
-// Pos 3: Sleeping→Dying→Eating→Walking→Ruling
-// Pos 4: Ruling→Sleeping→Dying→Eating→Walking
-// Pos 5: Walking→Ruling→Sleeping→Dying→Eating
+// ── ACTIVITY ORDER per bird position ──
+// Read from PDF TABLE COLUMNS (each column = sequence of activities for that bird over time)
+// VERIFIED against 6+ worked examples in the PDF:
+//   Pos1: Eat→Die→Sleep→Rule→Walk  (Vulture SP Tue Day; Crow KP Fri Night examples)
+//   Pos2: Walk→Eat→Die→Sleep→Rule  (Owl SP Sun Day Ex3; Owl SP Tue Night Ex5; Hen SP Fri Night Ex1; Hen KP Thu Night Ex2)
+//   Pos4: Sleep→Rule→Walk→Eat→Die  (Hen SP Tue Night BigBoss Ex2)
+// PDF text states: "Eat for 2G; Walk for 1G+1Pada; Rule for 1G+2Pada; Sleep for 3Pada; Die for 2Pada"
+// But EXAMPLES show: Ruling=2G (largest), Eating=1.5G, Walking=1.25G — Eating & Ruling were swapped in text
 const ACT_START_BY_POS = [
-  ['Eating','Walking','Ruling','Sleeping','Dying'],
-  ['Dying','Eating','Walking','Ruling','Sleeping'],
-  ['Sleeping','Dying','Eating','Walking','Ruling'],
-  ['Ruling','Sleeping','Dying','Eating','Walking'],
-  ['Walking','Ruling','Sleeping','Dying','Eating']
+  ['Eating','Dying','Sleeping','Ruling','Walking'],   // Position 1 (first bird in sequence)
+  ['Walking','Eating','Dying','Sleeping','Ruling'],   // Position 2
+  ['Ruling','Walking','Eating','Dying','Sleeping'],   // Position 3
+  ['Sleeping','Ruling','Walking','Eating','Dying'],   // Position 4
+  ['Dying','Sleeping','Ruling','Walking','Eating']    // Position 5 (last bird in sequence)
 ];
 
-// Ghatika durations (total = 6 ghatika per bird):
-// Eating=2G, Walking=1G+1Pada(=1.25G), Ruling=1G+2Pada(=1.5G), Sleeping=3Pada(=0.75G), Dying=2Pada(=0.5G)
-const ACT_GHATIKAS = {Eating:2, Walking:1.25, Ruling:1.5, Sleeping:0.75, Dying:0.5};
+// ── GHATIKA DURATIONS — Verified from PDF worked examples ──
+// PDF text says: Eat=2G, Walk=1G+1Pada(=1.25G), Rule=1G+2Pada(=1.5G), Sleep=3Pada(=0.75G), Die=2Pada(=0.5G)
+// But EXAMPLES consistently show Ruling takes the LARGEST slot (2G) and Eating takes 1.5G:
+//   Ex3 Owl pos2: Walk=28.68min≈1.25G, Eat=34.42min≈1.5G, Die=11.47min≈0.5G, Sleep=17.20min≈0.75G, Rule=remaining≈2G ✓
+//   Ex5 Owl pos2: Walk=33min≈1.25G, Eat=39min≈1.44G≈1.5G ✓
+//   Ex6 Crow pos2: Walk=26min≈1.25G, Eat=31min≈1.48G≈1.5G ✓
+//   Ex2 Hen pos2: Walk=26min≈1.19G≈1.25G, Eat=31min≈1.42G≈1.5G ✓
+// Total: 1.5+1.25+2+0.75+0.5 = 6G ✓
+const ACT_GHATIKAS = {Eating:1.5, Walking:1.25, Ruling:2, Sleeping:0.75, Dying:0.5};
 
-// Dead birds — verified against PDF (listed twice identically, confirmed correct)
+// Dead birds — per PDF
 const DEAD = {
   shukla: {0:'owl',  1:'crow',   2:'peacock', 3:'hen',     4:'vulture', 5:'owl',     6:'vulture'},
   krishna:{0:'crow', 1:'owl',    2:'vulture', 3:'peacock', 4:'hen',     5:'peacock', 6:'hen'}
@@ -595,28 +578,16 @@ const ACT_INFO = {
 
 const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
-// ── MATCHMAKING NAKSHATRAS — From PDF visual table (Sages' system, different from general) ──
-// Vulture(5): Ashwini, Ardra, Purva Phalguni, Vishakha, Uttara Asadha
-// Owl(6):     Bharani, Punarvasu, Uttara Phalguni, Anuradha, Shravana
-// Crow(5):    Krittika, Pushya, Hasta, Jyestha, Dhanistha
-// Hen(5):     Rohini, Ashlesha, Chitra, Mula, Shatabhisa
-// Peacock(6+):Mrigashira, Magha, Swati, Purva Asadha, Purva Phalguni(dup), Uttara Phalguni(dup), Revati
-// Note: PDF explicitly says "Nakshatra lordship of Birds are different here, comes from Sages"
+// ── MATCHMAKING NAKSHATRAS ──
 const NK_BIRDS_MATCH = {
-  // Vulture column
   'Ashwini':'vulture','Ardra':'vulture','Purva Phalguni':'vulture','Vishakha':'vulture','Uttara Asadha':'vulture',
-  // Owl column
   'Bharani':'owl','Punarvasu':'owl','Uttara Phalguni':'owl','Anuradha':'owl','Shravana':'owl',
-  // Crow column
   'Krittika':'crow','Pushya':'crow','Hasta':'crow','Jyestha':'crow','Dhanistha':'crow',
-  // Hen column
   'Rohini':'hen','Ashlesha':'hen','Chitra':'hen','Mula':'hen','Shatabhisa':'hen',
-  // Peacock column (including duplicates as per PDF table)
   'Mrigashira':'peacock','Magha':'peacock','Swati':'peacock','Purva Asadha':'peacock',
   'Purva Bhadra':'peacock','Uttara Bhadra':'peacock','Revati':'peacock'
 };
 
-// Matchmaking nakshatra list in zodiac order
 const MATCH_NAKSHATRAS = [
   'Ashwini','Bharani','Krittika','Rohini','Mrigashira',
   'Ardra','Punarvasu','Pushya','Ashlesha',
@@ -653,13 +624,11 @@ function showTab(name, btn){
   btn.classList.add('active');
 }
 
-// Parse "HH:MM" or "HH:MM:SS" → decimal minutes
 function toMins(t){
   const p = t.split(':').map(Number);
   return p[0]*60 + p[1] + (p[2]||0)/60;
 }
 
-// Format decimal minutes → "H:MM:SS AM/PM"
 function toHMS(m){
   m = ((m % 1440) + 1440) % 1440;
   const h = Math.floor(m/60), mm = Math.floor(m%60), ss = Math.round((m%1)*60);
@@ -689,15 +658,17 @@ function getOrder(paksha, isNight, dow){
 }
 
 function buildSlots(order, periodStart, birdDur){
+  // Total ghatika units per bird = sum of all ACT_GHATIKAS = 1.5+1.25+2+0.75+0.5 = 6
+  const totalG = Object.values(ACT_GHATIKAS).reduce((a,b)=>a+b, 0); // = 6
   return order.map((bird, i) => {
     const start = periodStart + i * birdDur;
     const end = start + birdDur;
     const actOrder = ACT_START_BY_POS[i];
     const ghats = [];
     let aStart = start;
-    const totalG = 6; // sum of ACT_GHATIKAS = 2+1.25+1.5+0.75+0.5 = 6
     for(let j=0;j<5;j++){
       const actName = actOrder[j];
+      // Duration = (ghatika_count / 6) * birdDur
       const dur = (birdDur / totalG) * ACT_GHATIKAS[actName];
       ghats.push({activity:actName, start:aStart, end:aStart+dur, dur});
       aStart += dur;
@@ -714,43 +685,32 @@ function findCurrentSlot(slots, timeAdj){
       return {slotIdx:i, ghat:g};
     }
   }
-  // Fallback: last slot
   return {slotIdx:4, ghat:slots[4].ghats[slots[4].ghats.length-1]};
 }
 
-// ── CORE: Determine period and adjust times ──
-// NIGHT = Sunset → Next Day Sunrise (may cross midnight)
-// periodStart in raw minutes; if night and query is before midnight the start wraps
 function computePeriod(timeMins, sunriseMins, sunsetMins, nextSunriseMins){
-  // nextSunriseMins is the NEXT DAY sunrise (may be close to sunriseMins numerically)
-  // We treat next day sunrise as sunriseMins + ~1440 if it's < sunsetMins
   let nextSrAbs = nextSunriseMins;
-  if(nextSrAbs < sunsetMins) nextSrAbs += 1440; // next sunrise is next calendar day
+  if(nextSrAbs < sunsetMins) nextSrAbs += 1440;
 
   let isNight, periodStart, periodEnd, label;
 
   if(timeMins >= sunriseMins && timeMins < sunsetMins){
-    // Daytime
     isNight = false;
     periodStart = sunriseMins;
     periodEnd = sunsetMins;
     label = 'Daytime (Dinamana)';
   } else {
-    // Nighttime — time is either >= sunsetMins OR < sunriseMins (after midnight)
     isNight = true;
     periodStart = sunsetMins;
-    periodEnd = nextSrAbs;          // e.g., 18:00 → 06:05+1440=1445 = 06:05 next day
+    periodEnd = nextSrAbs;
     label = 'Night (Ratrimana)';
   }
 
   return {isNight, periodStart, periodEnd, label, nextSrAbs};
 }
 
-// Adjust timeMins so it falls within [periodStart, periodEnd]
-// Night times after midnight need +1440
 function adjustTime(timeMins, isNight, sunsetMins){
   if(!isNight) return timeMins;
-  // If night and time is in early morning (< sunset), it's after midnight → add 1440
   if(timeMins < sunsetMins) return timeMins + 1440;
   return timeMins;
 }
@@ -778,7 +738,8 @@ function calcNatal(){
 
   const totalDur  = periodEnd - periodStart;
   const birdDur   = totalDur / 5;
-  const ghatikaV  = birdDur / 6;
+  const totalG    = Object.values(ACT_GHATIKAS).reduce((a,b)=>a+b,0); // 6
+  const ghatikaV  = birdDur / totalG;
   const padaV     = ghatikaV / 4;
 
   const order  = getOrder(paksha, isNight, dow);
@@ -793,21 +754,19 @@ function calcNatal(){
   const el = document.getElementById('natal-result');
   el.style.display = 'block';
 
-  // Tiles
   const tiles = [
-    {l:'Day of Week',   v:DAY_NAMES[dow]},
-    {l:'Paksha',        v:paksha==='shukla'?'Shukla Paksha':'Krishna Paksha'},
-    {l:'Period',        v:label},
-    {l:'Total Duration',v:fmtDur(totalDur)},
-    {l:'Per Bird',      v:fmtDur(birdDur)},
-    {l:'One Ghatika',   v:fmtDur(ghatikaV)},
-    {l:'One Pada',      v:fmtDur(padaV)},
+    {l:'Day of Week',    v:DAY_NAMES[dow]},
+    {l:'Paksha',         v:paksha==='shukla'?'Shukla Paksha':'Krishna Paksha'},
+    {l:'Period',         v:label},
+    {l:'Total Duration', v:fmtDur(totalDur)},
+    {l:'Per Bird',       v:fmtDur(birdDur)},
+    {l:'One Ghatika',    v:fmtDur(ghatikaV)},
+    {l:'One Pada',       v:fmtDur(padaV)},
     {l:'Dead Bird Today',v:BIRDS[deadKey].ico+' '+BIRDS[deadKey].name}
   ];
 
   let html = `<div class="tile-grid">${tiles.map((t,i)=>`<div class="tile" style="animation-delay:${.04*i}s"><div class="tile-lbl">${t.l}</div><div class="tile-val sm">${t.v}</div></div>`).join('')}</div>`;
 
-  // Hero
   html += `<div class="hero">
     <div class="h-orb" style="background:${bInfo.col}18;border-color:${bInfo.col}55">${bInfo.ico}</div>
     <div class="h-info">
@@ -824,7 +783,6 @@ function calcNatal(){
     </div>
   </div>`;
 
-  // Summary card
   html += `<div class="card">
     <div class="slabel">Interpretation</div>
     <div class="prow"><span class="p-lbl">Bird Strength</span><span class="p-val">${bInfo.name} — Rank ${bInfo.strength}/5 ${bInfo.strength===1?'(Most Powerful – Crow)':bInfo.strength===2?'(2nd – Vulture)':bInfo.strength===3?'(3rd – Hen)':bInfo.strength===4?'(4th – Owl)':'(Weakest – Peacock)'}</span></div>
@@ -839,7 +797,6 @@ function calcNatal(){
     <div class="prow"><span class="p-lbl">Nakshatra Group</span><span class="p-val">${bInfo.nakshatras.join(', ')}</span></div>
   </div>`;
 
-  // Timeline
   html += `<div class="card"><div class="slabel">Five Bird Rulership Timeline — ${isNight?'Night':'Day'}</div>`;
   for(let i=0;i<5;i++){
     const s = slots[i], b = BIRDS[s.bird], isBirth = i===slotIdx;
@@ -863,10 +820,9 @@ function calcNatal(){
   }
   html += `</div>`;
 
-  // Ghatika detail for birth bird
   html += `<div class="card">
     <div class="slabel">Birth Bird Activity Phases — ${bInfo.ico} ${bInfo.name}</div>
-    <div style="font-size:13px;color:var(--text2);margin-bottom:12px">Position ${slotIdx+1} → activity starts with <strong style="color:var(--text)">${ACT_START_BY_POS[slotIdx][0]}</strong> · Ruling ${toHM(slots[slotIdx].start)} → ${toHM(slots[slotIdx].end)}</div>`;
+    <div style="font-size:13px;color:var(--text2);margin-bottom:12px">Position ${slotIdx+1} → first activity: <strong style="color:var(--text)">${ACT_START_BY_POS[slotIdx][0]}</strong> · Rules ${toHM(slots[slotIdx].start)} → ${toHM(slots[slotIdx].end)}</div>`;
   const maxDur = Math.max(...slots[slotIdx].ghats.map(g=>g.dur));
   for(const g of slots[slotIdx].ghats){
     const isCur = g.activity === ghat.activity;
@@ -882,7 +838,6 @@ function calcNatal(){
   }
   html += `</div>`;
 
-  // Activity meaning grid
   html += `<div class="card"><div class="slabel">Five Activity States</div><div class="mg">`;
   for(const [act, info] of Object.entries(ACT_INFO)){
     const isCur = act === ghat.activity;
@@ -1052,13 +1007,11 @@ function calcToday(){
   let nsrAbs = nsrMins;
   if(nsrAbs < ssMins) nsrAbs += 1440;
 
-  // Day schedule
   const dayDur   = ssMins - srMins;
   const dayBird  = dayDur / 5;
   const dayOrder = getOrder(paksha, false, dow);
   const daySlots = buildSlots(dayOrder, srMins, dayBird);
 
-  // Night schedule
   const nightDur   = nsrAbs - ssMins;
   const nightBird  = nightDur / 5;
   const nightOrder = getOrder(paksha, true, dow);
@@ -1080,9 +1033,8 @@ function calcToday(){
     let out = `<div class="card"><div class="slabel">${lbl} · Per Bird: ${fmtDur(birdDur)}</div>`;
     for(let i=0;i<5;i++){
       const s = slots[i], b = BIRDS[s.bird];
-      // Determine if this bird is currently ruling
       let nowAdj = nowM;
-      if(isNight && nowM < ssMins) nowAdj = nowM + 1440; // after midnight
+      if(isNight && nowM < ssMins) nowAdj = nowM + 1440;
       const isCurrentPeriod = isNight
         ? (nowM >= ssMins || nowM < srMins)
         : (nowM >= srMins && nowM < ssMins);
@@ -1144,7 +1096,6 @@ function calcDasha(){
   const birdKey  = order[slotIdx];
   const bInfo    = BIRDS[birdKey];
 
-  // Build 5-bird sequence starting from birth bird
   const birdSeq = [];
   for(let i=slotIdx; i<5; i++) birdSeq.push(order[i]);
   for(let i=0; i<slotIdx; i++) birdSeq.push(order[i]);
@@ -1154,9 +1105,12 @@ function calcDasha(){
   const YEAR_MS = 365.25 * 24 * 3600 * 1000;
   let cursor    = new Date(dob);
 
+  // Antardasha proportions based on ghatika durations (total=6G)
+  const totalG = Object.values(ACT_GHATIKAS).reduce((a,b)=>a+b,0);
+
   let html = `<div class="card">
     <div class="slabel">Birth Bird: ${bInfo.ico} ${bInfo.name} (Rank ${bInfo.strength}) · Dasha from Birth</div>
-    <p style="font-size:13px;color:var(--text2);margin-bottom:16px">Each bird rules 6 years. 5-bird × 5 cycles = 150 years total.</p>`;
+    <p style="font-size:13px;color:var(--text2);margin-bottom:16px">Each bird rules 6 years. 5-bird × 5 cycles = 150 years total.<br>Antardasha durations: Ruling=2yr, Eating=1.5yr, Walking=1.25yr, Sleeping=0.75yr, Dying=0.5yr (proportional to ghatika sizes).</p>`;
 
   for(let rep=0; rep<5; rep++){
     for(let bi=0; bi<5; bi++){
@@ -1175,13 +1129,13 @@ function calcDasha(){
       </div>`;
 
       if(isCurrent){
-        // Antardasha breakdown using birth-slot activity order
+        // Antardasha: activities in order per position in cycle
         html += `<div style="background:var(--bg4);border-radius:var(--rs);padding:12px 16px;margin:4px 0 4px 130px">
-          <div style="font-size:11px;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.1em;margin-bottom:8px">ANTARDASHA (Activity Periods within Mahadasha)</div>`;
+          <div style="font-size:11px;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.1em;margin-bottom:8px">ANTARDASHA (proportional to ghatika sizes — Ruling=2yr, Eating=1.5yr, Walking=1.25yr, Sleeping=0.75yr, Dying=0.5yr)</div>`;
         let aCursor = new Date(mStart);
-        const actOrder = ACT_START_BY_POS[bi]; // position in current cycle determines activity order
+        const actOrder = ACT_START_BY_POS[bi]; // position in current cycle
         for(const act of actOrder){
-          const totalYears = 6 * ACT_GHATIKAS[act] / 6;
+          const totalYears = 6 * ACT_GHATIKAS[act] / totalG;
           const aEnd = new Date(aCursor.getTime() + totalYears*YEAR_MS);
           const isCA = today >= aCursor && today < aEnd;
           const ai2  = ACT_INFO[act];
@@ -1211,7 +1165,6 @@ function calcDasha(){
 // SIGNIFICATIONS TAB
 // ═══════════════════════════════════════════
 function buildSignif(){
-  // Show birds in strength order: crow(1), vulture(2), hen(3), owl(4), peacock(5)
   const bkeys = ['crow','vulture','hen','owl','peacock'];
   const rows = [
     {l:'Sanskrit Name',  f:b=>BIRDS[b].skt},
@@ -1243,12 +1196,10 @@ function buildSignif(){
   document.getElementById('sig-tbody').innerHTML =
     rows.map(r=>`<tr><td class="row-lbl">${r.l}</td>${bkeys.map(b=>`<td>${r.f(b)}</td>`).join('')}</tr>`).join('');
 
-  // Tips table
   const tTbl = document.getElementById('tips-table');
   tTbl.innerHTML = `<thead><tr><th>Name Letter</th><th>Shukla Day</th><th>Shukla Night</th><th>Krishna Day</th><th>Krishna Night</th></tr></thead>
   <tbody>${TIPS_WINNING.map(t=>`<tr><td style="font-weight:500">${t.letter}</td><td>${t.sd}</td><td>${t.sn}</td><td>${t.kd}</td><td>${t.kn}</td></tr>`).join('')}</tbody>`;
 
-  // Victorious birds
   document.getElementById('victorious-grid').innerHTML =
     Object.entries(BIRDS).map(([k,b])=>`
       <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
@@ -1257,14 +1208,13 @@ function buildSignif(){
         <div style="font-size:13px;color:var(--text2)">${b.wins}</div></div>
       </div>`).join('');
 
-  // Dead bird table
   document.getElementById('dead-table').innerHTML =
     `<thead><tr><th>Day</th><th>Shukla Dead Bird</th><th>Krishna Dead Bird</th></tr></thead>
     <tbody>${DAY_NAMES.map((d,i)=>`<tr><td style="font-weight:500">${d}</td><td>${BIRDS[DEAD.shukla[i]].ico} ${BIRDS[DEAD.shukla[i]].name}</td><td>${BIRDS[DEAD.krishna[i]].ico} ${BIRDS[DEAD.krishna[i]].name}</td></tr>`).join('')}</tbody>`;
 }
 
 // ═══════════════════════════════════════════
-// MATCHMAKING — Corrected per PDF visual table
+// MATCHMAKING
 // ═══════════════════════════════════════════
 function buildMatchmaking(){
   const sel1 = document.getElementById('m-nk1');
@@ -1281,7 +1231,6 @@ function buildMatchmaking(){
   });
   sel2.value = MATCH_NAKSHATRAS[1];
 
-  // Full nakshatra table grouped by bird
   const bkeys = ['vulture','owl','crow','hen','peacock'];
   const nkByBird = {};
   bkeys.forEach(b=>{nkByBird[b]=[];});
